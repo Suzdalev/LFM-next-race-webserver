@@ -57,7 +57,7 @@ def races():
                     race["race_date"], "%Y-%m-%d %H:%M:%S"
                 ).replace(tzinfo=tz)
                 time_left = race_start_time - now
-                line = f"{format_timedelta(time_left)} | {race['race_id']} {race['series']} | Split {race['split']}"
+                line = f"{format_timedelta(time_left)} | #{race['race_id']} | {race['series']} | Split {race['split']}"
                 lines.append(line)
             race_text = "\n".join(lines)
 
