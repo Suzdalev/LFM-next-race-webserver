@@ -13,7 +13,13 @@ This script basically polls the API, gets a detailed list of your next races, pa
 
 ![](README/races2.png)
 
-Why http server? So that image could be used in SimHub Dashboard over _"Image from URL"_. Simply create a dashboard with only 1 object "imageFromUrl", set URL to "http://localhost:1715/races", set image update time to 2~10 seconds. 
+Why http server? So that image could be used in SimHub Dashboard over _"Image from URL"_.
+
+![](README/races3.png)
+
+![](README/demo2.jpg)
+
+Simply create a dashboard with only 1 object "imageFromUrl", set URL to "http://localhost:1715/races", set image update time to 2~10 seconds. 
 Now you can use this dashboard on any device you want, or like a screen overlay.
 
 ![img.png](README/img_from_url.png)

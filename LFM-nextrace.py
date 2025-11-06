@@ -2,7 +2,7 @@ import io
 import pytz
 import requests
 from flask import Flask, send_file
-from datetime import datetime
+from datetime import datetime, timedelta
 from PIL import Image, ImageDraw, ImageFont
 
 app = Flask(__name__)
@@ -31,6 +31,8 @@ def format_timedelta(tdelta):
     seconds = tdelta.seconds
     hours, remainder = divmod(seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
+    if tdelta < timedelta(0):
+        return "NOW"
     txt = f"{days} days, " if days > 0 else ""
     txt += f"{hours:02}:{minutes:02}:{seconds:02}"
     return txt
@@ -95,7 +97,10 @@ def races():
 
     y = margin
     for line, (w, h) in zip(lines, text_sizes):
-        draw.text((margin, y), line, font=font, fill=(255, 255, 255))
+        fill_color = (255, 255, 255)
+        if line.startswith("NOW"):
+            fill_color = (255, 100, 100)
+        draw.text((margin, y), line, font=font, fill=fill_color)
         y += h + line_spacing
 
     # --- Return image as PNG ---
