@@ -31,9 +31,10 @@ def races(token):
     try:
         if len(token) < 10:
             return "could not read Bearer TOKEN.\nOpen LFM website in browser, \
-                open DevConsole > Network, find 'getMySignedUpRaces' request.\
+                open DevConsole > Network, find 'getMySignedUpRaces' request.<br><br>\
                 \nIn the request header you will find bearer token, \
-                which you should put into 'bearer.txt' near EXE file\n\n\n"
+                which you should put into URL like <b>https://server/token</b><br><br> \
+                Check <a href=\"https://github.com/Suzdalev/LFM-next-race-webserver\">https://github.com/Suzdalev/LFM-next-race-webserver</a> for more details."
 
         HEADERS = {
             "Authorization": f"Bearer {token}",
@@ -63,7 +64,7 @@ def races(token):
 
     # --- Create image ---
     try:
-        font = ImageFont.truetype("impact.ttf", 28)
+        font = ImageFont.truetype("./impact.ttf", 28)
     except OSError:
         font = ImageFont.load_default()
 
