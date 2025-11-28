@@ -9,21 +9,8 @@ app = Flask(__name__)
 
 URL = "https://api3.lowfuelmotorsport.com/api/users/getMySignedUpRaces"
 
-TOKEN = ''
-try:
-    with open('bearer.txt', 'r') as file:
-        TOKEN = file.read()
-except:
-    print('could not read Bearer TOKEN.\nOpen LFM website in browser, open DevConsole > Network, find "getMySignedUpRaces" request.\nIn the request header you will find bearer token, which you should put into "bearer.txt" near EXE file\n\n\n')
-    exit(127)
-
 print("\nResulting image is available on http://127.0.0.1:1715/races\n\n")
 
-
-HEADERS = {
-    "Authorization": f"Bearer {TOKEN}",
-    "Accept": "application/json"
-}
 
 def format_timedelta(tdelta):
     """Formats timedelta as 'D days, HH:MM:SS'"""
@@ -38,10 +25,21 @@ def format_timedelta(tdelta):
     return txt
 
 
-@app.route("/races")
-def races():
+@app.route("/<token>")
+def races(token):
     # --- Fetch race data ---
     try:
+        if len(token) < 10:
+            return "could not read Bearer TOKEN.\nOpen LFM website in browser, \
+                open DevConsole > Network, find 'getMySignedUpRaces' request.\
+                \nIn the request header you will find bearer token, \
+                which you should put into 'bearer.txt' near EXE file\n\n\n"
+
+        HEADERS = {
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/json"
+        }
+
         response = requests.get(URL, headers=HEADERS, timeout=10)
         response.raise_for_status()
         race_data = response.json()
