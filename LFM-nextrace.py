@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 URL = "https://api3.lowfuelmotorsport.com/api/users/getMySignedUpRaces"
 
-print("\nResulting image is available on http://127.0.0.1:1715/races\n\n")
+print("\nResulting image is available on http://127.0.0.1:1715/<bearer_token>\n\n")
 
 
 def format_timedelta(tdelta):
