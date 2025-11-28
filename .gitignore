@@ -2,3 +2,5 @@
 /dist/
 bearer.txt
 /LFM-nextrace.spec
+/.venv/
+/.idea/
