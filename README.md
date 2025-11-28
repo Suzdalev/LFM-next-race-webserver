@@ -1,3 +1,5 @@
+![Badge](https://hitscounter.dev/api/hit?url=https%3A%2F%2Fgithub.com%2FSuzdalev%2FLFM-next-race-webserver&label=Visitors&icon=save&color=%23861919&message=&style=flat&tz=UTC)
+
 # LFM Next race poller 
 This application is a simple poller from [***lowfuelmotorsport.com***](lowfuelmotorsport.com) internal API, which polls a list of your upcoming races.
 This was inspired by paid feature of [lsr.gg](lsr.gg) LovelyFlags, **_which shows countdown till your next LFM race_**.
